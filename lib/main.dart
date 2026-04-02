@@ -9,11 +9,13 @@ import 'application/app_locale.dart';
 import 'application/selected_forui_theme.dart';
 import 'bootstrap/app_fonts.dart';
 import 'bootstrap/env_loader.dart';
+import 'bootstrap/sqflite_setup.dart';
 import 'core/logging/app_log.dart';
 import 'router/app_router.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await ensureSqfliteInitialized();
   await loadAppEnvironment();
   await preloadKoreanUiFont();
   AppLog.i('Application starting');

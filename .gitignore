@@ -26,6 +26,9 @@ migrate_working_dir/
 # is commented out by default.
 #.vscode/
 
+# Riverpod persist 데모 (로컬 DB, 프로젝트 루트 riverpod_persist_demo/)
+riverpod_persist_demo/
+
 # Flutter/Dart/Pub related
 **/doc/api/
 **/ios/Flutter/.last_build_id

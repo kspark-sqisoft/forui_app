@@ -22,6 +22,23 @@ import '../pages/form/label_page.dart';
 import '../pages/form/multi_select_page.dart';
 import '../pages/form/picker_page.dart';
 import '../pages/form/quill_rich_text_page.dart';
+import '../pages/packages/riverpod/riverpod_async_lifecycle_page.dart';
+import '../pages/packages/riverpod/riverpod_auto_dispose_page.dart';
+import '../pages/packages/riverpod/riverpod_consumers_page.dart';
+import '../pages/packages/riverpod/riverpod_dummyjson_posts_page.dart';
+import '../pages/packages/riverpod/riverpod_dummyjson_todos_page.dart';
+import '../pages/packages/riverpod/riverpod_family_page.dart';
+import '../pages/packages/riverpod/riverpod_mutations_page.dart';
+import '../pages/packages/riverpod/riverpod_offline_persist_page.dart';
+import '../pages/packages/riverpod/riverpod_observers_page.dart';
+import '../pages/packages/riverpod/riverpod_overrides_page.dart';
+import '../pages/packages/riverpod/riverpod_providers_page.dart';
+import '../pages/packages/riverpod/riverpod_refs_page.dart';
+import '../pages/packages/riverpod/riverpod_select_page.dart';
+import '../pages/packages/riverpod/riverpod_scope_page.dart';
+import '../pages/packages/riverpod/riverpod_scoping_page.dart';
+import '../pages/packages/riverpod/riverpod_retry_page.dart';
+import '../pages/packages/riverpod/riverpod_supplemental_pages.dart';
 import '../pages/packages/riverpod_lab_page.dart';
 import '../pages/form/radio_page.dart';
 import '../pages/form/slider_page.dart';
@@ -148,6 +165,78 @@ final GoRouter appRouter = GoRouter(
         GoRoute(
           path: '/packages/riverpod',
           pageBuilder: (context, state) => _shellChildPage(state, const RiverpodLabPage()),
+        ),
+        GoRoute(
+          path: '/packages/riverpod/providers',
+          pageBuilder: (context, state) => _shellChildPage(state, const RiverpodProvidersPage()),
+        ),
+        GoRoute(
+          path: '/packages/riverpod/consumers',
+          pageBuilder: (context, state) => _shellChildPage(state, const RiverpodConsumersPage()),
+        ),
+        GoRoute(
+          path: '/packages/riverpod/scope',
+          pageBuilder: (context, state) => _shellChildPage(state, const RiverpodScopePage()),
+        ),
+        GoRoute(
+          path: '/packages/riverpod/refs',
+          pageBuilder: (context, state) => _shellChildPage(state, const RiverpodRefsPage()),
+        ),
+        GoRoute(
+          path: '/packages/riverpod/async-lifecycle',
+          pageBuilder: (context, state) => _shellChildPage(state, const RiverpodAsyncLifecyclePage()),
+        ),
+        GoRoute(
+          path: '/packages/riverpod/dummyjson-todos',
+          pageBuilder: (context, state) => _shellChildPage(state, const RiverpodDummyJsonTodosPage()),
+        ),
+        GoRoute(
+          path: '/packages/riverpod/dummyjson-posts',
+          pageBuilder: (context, state) => _shellChildPage(state, const RiverpodDummyJsonPostsPage()),
+        ),
+        GoRoute(
+          path: '/packages/riverpod/auto-dispose',
+          pageBuilder: (context, state) => _shellChildPage(state, const RiverpodAutoDisposePage()),
+        ),
+        GoRoute(
+          path: '/packages/riverpod/family',
+          pageBuilder: (context, state) => _shellChildPage(state, const RiverpodFamilyPage()),
+        ),
+        GoRoute(
+          path: '/packages/riverpod/select',
+          pageBuilder: (context, state) => _shellChildPage(state, const RiverpodSelectPage()),
+        ),
+        GoRoute(
+          path: '/packages/riverpod/mutations',
+          pageBuilder: (context, state) => _shellChildPage(state, const RiverpodMutationsPage()),
+        ),
+        GoRoute(
+          path: '/packages/riverpod/offline',
+          pageBuilder: (context, state) => _shellChildPage(state, const RiverpodOfflinePersistPage()),
+        ),
+        GoRoute(
+          path: '/packages/riverpod/retry',
+          pageBuilder: (context, state) => _shellChildPage(state, const RiverpodRetryPage()),
+        ),
+        GoRoute(
+          path: '/packages/riverpod/observers',
+          pageBuilder: (context, state) => _shellChildPage(state, const RiverpodObserversPage()),
+        ),
+        GoRoute(
+          path: '/packages/riverpod/overrides',
+          pageBuilder: (context, state) => _shellChildPage(state, const RiverpodOverridesPage()),
+        ),
+        GoRoute(
+          path: '/packages/riverpod/scoping',
+          pageBuilder: (context, state) => _shellChildPage(state, const RiverpodScopingPage()),
+        ),
+        GoRoute(
+          path: '/packages/riverpod/codegen',
+          pageBuilder: (context, state) => _shellChildPage(state, const RiverpodCodegenPage()),
+        ),
+        GoRoute(
+          path: '/packages/riverpod/hooks',
+          pageBuilder: (context, state) => _shellChildPage(state, const RiverpodHooksPage()),
         ),
         GoRoute(
           path: '/data/card',

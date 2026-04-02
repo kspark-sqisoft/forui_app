@@ -6,6 +6,8 @@ abstract final class AppLog {
   static final Logger _logger = Logger(
     level: kReleaseMode ? Level.warning : Level.debug,
     filter: _AppLogFilter(),
+    printer: SimplePrinter(printTime: true),
+    /*
     printer: PrettyPrinter(
       methodCount: kReleaseMode ? 0 : 2,
       errorMethodCount: 8,
@@ -14,6 +16,7 @@ abstract final class AppLog {
       printEmojis: !kReleaseMode,
       dateTimeFormat: DateTimeFormat.onlyTimeAndSinceStart,
     ),
+    */
   );
 
   static void v(String message, [Object? error, StackTrace? stackTrace]) {

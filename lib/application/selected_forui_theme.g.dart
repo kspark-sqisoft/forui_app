@@ -126,4 +126,4 @@ final class ResolvedForuiThemeProvider
 }
 
 String _$resolvedForuiThemeHash() =>
-    r'690808b75bbee8409a7ca5199136c92a327a13d0';
+    r'7fa07bd3e482cbbd078f9fd9540308a7227b7649';
