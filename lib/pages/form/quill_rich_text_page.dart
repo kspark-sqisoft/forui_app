@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_quill/flutter_quill.dart';
 import 'package:forui/forui.dart';
 
+import '../../bootstrap/app_fonts.dart';
 import '../common/doc_example_block.dart';
 import '../common/page_intro.dart';
 import 'quill_learning_sample_document.dart';
@@ -67,6 +68,7 @@ class _QuillRichTextPageState extends State<QuillRichTextPage> {
   @override
   Widget build(BuildContext context) {
     final theme = context.theme;
+    final quillL10n = FlutterQuillLocalizations.of(context)!;
     final toolbarConfig = QuillSimpleToolbarConfig(
       multiRowsDisplay: true,
       showAlignmentButtons: true,
@@ -83,6 +85,21 @@ class _QuillRichTextPageState extends State<QuillRichTextPage> {
         linkStyle: QuillToolbarLinkStyleButtonOptions(
           validateLink: (_) => true,
         ),
+        fontFamily: QuillToolbarFontFamilyButtonOptions(
+          items: {
+            'Sans Serif': 'sans-serif',
+            'Serif': 'serif',
+            'Monospace': 'monospace',
+            'Noto Sans KR': kBundledKoreanFontFamily,
+            'Nanum Gothic': kBundledNanumGothicFontFamily,
+            'Ibarra Real Nova': 'ibarra-real-nova',
+            'SquarePeg': 'square-peg',
+            'Nunito': 'nunito',
+            'Pacifico': 'pacifico',
+            'Roboto Mono': 'roboto-mono',
+            quillL10n.clear: 'Clear',
+          },
+        ),
       ),
     );
 
@@ -95,6 +112,7 @@ class _QuillRichTextPageState extends State<QuillRichTextPage> {
               '• 상단 툴바: 서식·블록·목록·정렬·들여쓰기·링크·검색·히스토리·클립보드\n'
               '• 에디터: [QuillEditor] + [QuillController]; 본문은 고정 높이 영역 안에서 스크롤합니다(바깥 [SingleChildScrollView]와 충돌 방지).\n'
               '• 앱 루트에 [FlutterQuillLocalizations.delegate]를 등록해야 툴바·다이얼로그 문자열이 정상 로드됩니다.\n'
+              '• 글꼴 메뉴: [pubspec]에 등록한 이름(예: Noto Sans KR)을 [items]에 넣어야 에디터에 반영됩니다. 기본 항목(nunito 등)은 앱에 해당 폰트가 없으면 시스템 대체로 보일 수 있습니다.\n'
               '• 이미지/동영상 임베드는 flutter_quill_extensions 등 추가 설정이 필요합니다.',
         ),
         DocExampleBlock(

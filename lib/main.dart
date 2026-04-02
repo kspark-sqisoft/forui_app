@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_quill/flutter_quill.dart';
@@ -6,6 +7,7 @@ import 'package:forui/forui.dart';
 
 import 'application/app_locale.dart';
 import 'application/selected_forui_theme.dart';
+import 'bootstrap/app_fonts.dart';
 import 'bootstrap/env_loader.dart';
 import 'core/logging/app_log.dart';
 import 'router/app_router.dart';
@@ -13,6 +15,7 @@ import 'router/app_router.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await loadAppEnvironment();
+  await preloadKoreanUiFont();
   AppLog.i('Application starting');
   runApp(const ProviderScope(child: FlutterSandboxApp()));
 }
@@ -37,6 +40,10 @@ class FlutterSandboxApp extends ConsumerWidget {
 
     // 최상위 FTheme: 앱 전체 트리에 Forui용 FThemeData를 주입합니다.
     // (하위에서 중첩 FTheme을 쓰면 그 subtree만 다른 data를 쓸 수 있음 — customizing_themes_page 참고)
+    final colorScheme = ColorScheme.fromSeed(
+      seedColor: fTheme.colors.primary,
+      brightness: fTheme.colors.brightness,
+    );
     return FTheme(
       data: fTheme,
       child: MaterialApp.router(
@@ -44,11 +51,9 @@ class FlutterSandboxApp extends ConsumerWidget {
         debugShowCheckedModeBanner: false,
         // Material 3 ColorScheme: Forui primary·light/dark와 톤을 맞춤 (완전 동일하진 않지만 이질감 완화)
         theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(
-            seedColor: fTheme.colors.primary,
-            brightness: fTheme.colors.brightness,
-          ),
+          colorScheme: colorScheme,
           useMaterial3: true,
+          fontFamily: kIsWeb ? kBundledKoreanFontFamily : null,
         ),
         locale: locale,
         localizationsDelegates: const [

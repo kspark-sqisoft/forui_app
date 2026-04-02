@@ -1,5 +1,8 @@
+import 'package:flutter/foundation.dart';
 import 'package:forui/forui.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+
+import '../bootstrap/app_fonts.dart';
 
 part 'selected_forui_theme.g.dart';
 
@@ -102,5 +105,17 @@ class SelectedForuiTheme extends _$SelectedForuiTheme {
 /// [FTheme] 위젯의 `data`로도 동일 인스턴스를 넘겨야 Forui 위젯과 Material 위젯 색이 어긋나지 않습니다.
 @riverpod
 FThemeData resolvedForuiTheme(Ref ref) {
-  return ref.watch(selectedForuiThemeProvider).desktopFThemeData;
+  final base = ref.watch(selectedForuiThemeProvider).desktopFThemeData;
+  if (!kIsWeb) return base;
+
+  return FThemeData(
+    colors: base.colors,
+    touch: false,
+    debugLabel: base.debugLabel,
+    typography: FTypography.inherit(
+      colors: base.colors,
+      touch: false,
+      defaultFontFamily: kBundledKoreanFontFamily,
+    ),
+  );
 }
